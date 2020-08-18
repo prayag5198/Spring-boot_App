@@ -23,7 +23,8 @@ pipeline {
         
         stage('publist JUnit') {
             steps {
-                echo "published"
+                junit 'spring-boot-samples/spring-boot-sample-atmosphere/target/surefire-reports/*.xml'
+                //echo "published"
             }
         }
         
