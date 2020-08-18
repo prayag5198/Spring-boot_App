@@ -3,6 +3,10 @@ pipeline {
     stages {
         
         stage('build') {
+            tools {
+                jdk 'jdk-11.0.6'
+                maven 'apache-maven-3.6.1'
+            }
             steps {
                 powershell label: '', script: 'mvn clean package -f spring-boot-samples/spring-boot-sample-atmosphere/pom.xml'
                 // echo "built"
