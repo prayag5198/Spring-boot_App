@@ -1,20 +1,17 @@
 pipeline {
-  agent any
-  stages {
-    stage('Source') { 
-      steps {
-			// Some Step
-      }
+    agent any
+    stages {
+        stage('checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/prayag5198/Spring-boot_App.git']]])
+            }
+        }
+        
+        stage('build') {
+            steps {
+                echo "built"
+               // checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/prayag5198/Spring-boot_App.git']]])
+            }
+        }
     }
-    stage('Compile') { 
-      tools {
-        // Specify Tool Name from your global tool configuration
-		jdk 'jdk11'
-        maven 'maven-3.6.1'
-      }
-      steps {
-			// Some Step
-      }
-    }
-  }
 }
