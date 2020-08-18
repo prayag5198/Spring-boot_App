@@ -16,7 +16,8 @@ pipeline {
         
         stage('archive') {
             steps {
-                echo "archived"
+                archive 'spring-boot-samples/spring-boot-sample-atmosphere/target/*.jar'
+                //echo "archived"
             }
         }
         
